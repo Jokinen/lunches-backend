@@ -4,7 +4,7 @@ __version__ = '0.5.2'
 
 import logging
 import requests
-import lxml
+#import lxml
 import re
 import datetime
 from bs4 import BeautifulSoup as bs
@@ -34,7 +34,7 @@ class Unica(Parser):
             if page == 1:
                 # page could not be loaded, move on to next url
                 continue
-            soup = bs(page.text, "lxml")
+            soup = bs(page.text, 'html.parser')
             restaurant, error = self.parse_page(soup, url["url_fi"])
             restaurant.restaurant_info["name"] = url["name"]
             restaurant.restaurant_info["id"] = url["id"]
